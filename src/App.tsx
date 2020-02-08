@@ -1,11 +1,11 @@
 import React from 'react';
 
-import WebCamSample from './components/WebCamSample';
+import RecordSample from './components/RecordSample';
 
 const App = () => {
   return (
     <div>
-      <WebCamSample />
+      <RecordSample />
     </div>
   );
 };
