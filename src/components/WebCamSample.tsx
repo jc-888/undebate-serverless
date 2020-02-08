@@ -1,9 +1,10 @@
 import React from 'react';
+import Webcam from 'react-webcam';
 
 const WebCamSample = () => {
   return (
     <div>
-      <p>WebCamSample</p>
+      <Webcam />
     </div>
   );
 };
