@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {ReactMediaRecorder} from 'react-media-recorder';
 
-class RecordSample4 extends Component {
+class Recorder extends Component {
   timer = (startRecording, stopRecording) => {
     console.log('Starting');
     startRecording();
@@ -35,4 +35,4 @@ class RecordSample4 extends Component {
   }
 }
 
-export default RecordSample4;
+export default Recorder;
