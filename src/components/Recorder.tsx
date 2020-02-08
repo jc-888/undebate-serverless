@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {ReactMediaRecorder} from 'react-media-recorder';
 
 class Recorder extends Component {
-  timer = (startRecording, stopRecording) => {
+  timer = (startRecording: any, stopRecording: any) => {
     console.log('Starting');
     startRecording();
     setTimeout(function() {
@@ -16,7 +16,12 @@ class Recorder extends Component {
       <div>
         <ReactMediaRecorder
           video
-          render={({status, startRecording, stopRecording, mediaBlobUrl}) => (
+          render={({
+            status,
+            startRecording,
+            stopRecording,
+            mediaBlobUrl,
+          }: any) => (
             <div>
               <p>{status}</p>
               <button
@@ -25,7 +30,6 @@ class Recorder extends Component {
                 }}>
                 Start Recording
               </button>
-              {/* <button onClick={stopRecording}>Stop Recording</button> */}
               <video src={mediaBlobUrl} controls />
             </div>
           )}
