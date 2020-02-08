@@ -1,19 +1,8 @@
+// https://github.com/mozmorris/react-webcam/issues/49#issuecomment-583561966
+
 import React, {Component} from 'react';
 import {RecordRTCPromisesHandler} from 'recordrtc';
 import Webcam from 'react-webcam';
-
-// interface Props {
-//   webcam: any;
-//   recorder: any;
-//   videoURL: any;
-// }
-
-// interface State {
-//   recorder: any;
-//   videoURL: any;
-// }
-
-// <Props, State>
 
 class RecordSample extends Component {
   state = {
@@ -24,7 +13,7 @@ class RecordSample extends Component {
   handleUserMedia = () => {
     const stream = this.webcam.stream;
     const recorder = new RecordRTCPromisesHandler(stream, {
-      type: 'video',
+      type: 'video/mp4;',
     });
     this.setState({recorder: recorder});
   };
