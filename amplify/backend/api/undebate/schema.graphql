@@ -1,0 +1,24 @@
+type Campaign @model {
+  id: ID!
+  name: String!
+  questions: [Question] @connection(name: "CampaignQuestions")
+}
+
+type Question @model {
+  id: ID!
+  question: String!
+  campaign: Campaign @connection(name: "CampaignQuestions")
+  answers: [Answer] @connection(name: "QuestionAnswers")
+}
+
+type Answer @model {
+  id: ID!
+  file: S3Object
+  post: Question @connection(name: "QuestionAnswers")
+}
+
+type S3Object {
+  bucket: String!
+  region: String!
+  key: String!
+}
