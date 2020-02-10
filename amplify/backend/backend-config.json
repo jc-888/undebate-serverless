@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"undebate13c3c6c2": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}

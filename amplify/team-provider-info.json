@@ -1,0 +1,20 @@
+{
+    "undebate": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-undebate-undebate-35403-authRole",
+            "UnauthRoleArn": "arn:aws:iam::505559108782:role/amplify-undebate-undebate-35403-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::505559108782:role/amplify-undebate-undebate-35403-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-undebate-undebate-35403-deployment",
+            "UnauthRoleName": "amplify-undebate-undebate-35403-unauthRole",
+            "StackName": "amplify-undebate-undebate-35403",
+            "StackId": "arn:aws:cloudformation:us-west-2:505559108782:stack/amplify-undebate-undebate-35403/b493d470-4a69-11ea-b7bf-02a77ed54d64",
+            "AmplifyAppId": "d3swsc5kjaxl0n"
+        },
+        "categories": {
+            "auth": {
+                "undebate13c3c6c2": {}
+            }
+        }
+    }
+}

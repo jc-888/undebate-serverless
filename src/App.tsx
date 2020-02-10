@@ -1,13 +1,20 @@
 import React from 'react';
+import {BrowserRouter} from 'react-router-dom';
 
-import Recorder from './components/Recorder';
+import Root from './Root';
+import Router from './Router';
+import Layout from './Layout';
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <Recorder />
-    </div>
+    <Root>
+      <BrowserRouter>
+        <Layout>
+          <Router />
+        </Layout>
+      </BrowserRouter>
+    </Root>
   );
-};
+}
 
 export default App;
