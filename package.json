@@ -23,6 +23,7 @@
     "prettier": "^1.19.1",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.10",
+    "react-countdown": "^2.2.1",
     "react-dom": "^16.8.6",
     "react-media-recorder": "^1.2.0",
     "react-redux": "^7.1.0",

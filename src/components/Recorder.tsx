@@ -1,17 +1,13 @@
 import React, {Component} from 'react';
 import {ReactMediaRecorder} from 'react-media-recorder';
+import Countdown from 'react-countdown';
 import VideoPreview from './VideoPreview';
 
-class Recorder extends Component {
-  timer = (startRecording: any, stopRecording: any) => {
-    console.log('Starting');
-    startRecording();
-    setTimeout(function() {
-      console.log('Stopping');
-      stopRecording();
-    }, 5000);
-  };
+interface RecorderProps {}
 
+interface RecorderState {}
+
+class Recorder extends Component<RecorderProps, RecorderState> {
   render() {
     return (
       <div>
@@ -32,18 +28,22 @@ class Recorder extends Component {
               )}
               {status === 'idle' && (
                 <div>
-                  <button
-                    onClick={() => {
-                      this.timer(startRecording, stopRecording);
-                    }}>
+                  <button onClick={() => startRecording()}>
                     Start Recording
                   </button>
                 </div>
               )}
               {status === 'recording' && (
                 <div>
-                  {/* add 60 second countdown clock here */}
+                  <Countdown
+                    date={Date.now() + 60000}
+                    onComplete={() => stopRecording()}
+                    renderer={({seconds}) => <h1>{seconds}</h1>}
+                  />
                   <VideoPreview stream={previewStream} />
+                  <button onClick={() => stopRecording()}>
+                    Stop Recording
+                  </button>
                 </div>
               )}
               {status === 'stopped' && (
