@@ -1,7 +1,7 @@
 import React, {useRef, useEffect} from 'react';
 
-const VideoPreview = ({stream}) => {
-  const videoRef = useRef(null);
+const VideoPreview = ({stream}: {stream: MediaStream | null}) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (videoRef.current && stream) {
