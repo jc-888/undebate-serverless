@@ -12,43 +12,47 @@ class Recorder extends Component {
     }, 5000);
   };
 
-  // render() {
-  //   return (
-  //     <div>
-  //       <ReactMediaRecorder
-  //         video
-  //         render={({
-  //           status,
-  //           startRecording,
-  //           stopRecording,
-  //           mediaBlobUrl,
-  //         }: any) => (
-  //           <div>
-  //             <p>{status}</p>
-  //             {/* <button
-  //             onClick={() => {
-  //               this.timer(startRecording, stopRecording);
-  //             }}>
-  //             Start Recording
-  //           </button> */}
-  //             <button onClick={startRecording}>Start Recording</button>
-  //             <button onClick={stopRecording}>Stop Recording</button>
-  //             <video controls />
-  //             <video src={mediaBlobUrl} controls />
-  //           </div>
-  //         )}
-  //       />
-  //     </div>
-  //   );
-  // }
   render() {
     return (
       <div>
         <ReactMediaRecorder
           video
-          render={({previewStream}) => {
-            return <VideoPreview stream={previewStream} />;
-          }}
+          render={({
+            status,
+            previewStream,
+            startRecording,
+            stopRecording,
+            mediaBlobUrl,
+          }: any) => (
+            <div>
+              {status === 'acquiring_media' && (
+                <div>
+                  <h1>Please Give Permission To Access Webcam And Audio</h1>
+                </div>
+              )}
+              {status === 'idle' && (
+                <div>
+                  <button
+                    onClick={() => {
+                      this.timer(startRecording, stopRecording);
+                    }}>
+                    Start Recording
+                  </button>
+                </div>
+              )}
+              {status === 'recording' && (
+                <div>
+                  {/* add 60 second countdown clock here */}
+                  <VideoPreview stream={previewStream} />
+                </div>
+              )}
+              {status === 'stopped' && (
+                <div>
+                  <video src={mediaBlobUrl} controls />
+                </div>
+              )}
+            </div>
+          )}
         />
       </div>
     );
