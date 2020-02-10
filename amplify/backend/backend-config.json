@@ -7,21 +7,12 @@
 			"customAuth": false
 		}
 	},
-	"api": {
-		"undebate": {
-			"service": "AppSync",
+	"api": {},
+	"function": {
+		"undebate08df619c": {
+			"service": "Lambda",
 			"providerPlugin": "awscloudformation",
-			"output": {
-				"authConfig": {
-					"additionalAuthenticationProviders": [],
-					"defaultAuthentication": {
-						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
-						"userPoolConfig": {
-							"userPoolId": "authundebate13c3c6c2"
-						}
-					}
-				}
-			}
+			"build": true
 		}
 	}
 }
