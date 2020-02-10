@@ -70,7 +70,7 @@ export const login = (history: any) => {
             userId: data.attributes.sub,
           },
         });
-        history.push('/protected');
+        history.push('/campaigns');
       })
       .catch(err => {
         console.log('Login Fail!');

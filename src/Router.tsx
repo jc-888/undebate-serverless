@@ -5,7 +5,7 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 import SignUp from './containers/SignUp';
 import Login from './containers/Login';
 import Home from './containers/Home';
-import ProtectedExample from './containers/ProtectedExample';
+import Campaigns from './containers/Campaigns';
 
 import {AppState} from './redux/rootAppState';
 
@@ -40,8 +40,8 @@ class MyRouter extends Component<Props, RouterProps> {
         <Route exact path="/login" component={Login} />
         <RestrictedRoute
           exact
-          path="/protected"
-          component={ProtectedExample}
+          path="/campaigns"
+          component={Campaigns}
           isLoggedIn={this.props.isLoggedIn}
         />
       </Switch>

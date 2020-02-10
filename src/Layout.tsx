@@ -45,11 +45,8 @@ class Layout extends Component<Props, LayoutState> {
           <Nav className="mr-auto">
             {this.props.isLoggedIn ? (
               <Fragment>
-                <Link to="/" className="nav-link">
-                  Links
-                </Link>
-                <Link to="/protected" className="nav-link">
-                  Protected
+                <Link to="/campaigns" className="nav-link">
+                  Campaigns
                 </Link>
               </Fragment>
             ) : (
