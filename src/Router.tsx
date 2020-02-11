@@ -6,6 +6,7 @@ import SignUp from './containers/SignUp';
 import Login from './containers/Login';
 import Home from './containers/Home';
 import Campaigns from './containers/Campaigns';
+import Campaign from './containers/Campaign';
 
 import {AppState} from './redux/rootAppState';
 
@@ -42,6 +43,12 @@ class MyRouter extends Component<Props, RouterProps> {
           exact
           path="/campaigns"
           component={Campaigns}
+          isLoggedIn={this.props.isLoggedIn}
+        />
+        <RestrictedRoute
+          exact
+          path="/campaign/:campaignID"
+          component={Campaign}
           isLoggedIn={this.props.isLoggedIn}
         />
       </Switch>

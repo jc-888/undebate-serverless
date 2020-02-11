@@ -4,7 +4,8 @@
  *
  */
 import {all} from 'redux-saga/effects';
+import campaignsSaga from './actions/campaignsSaga.saga';
 
 export default function* rootSaga() {
-  yield all([]);
+  yield all([campaignsSaga()]);
 }

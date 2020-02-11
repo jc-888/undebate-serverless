@@ -7,10 +7,13 @@ import {AppState} from '../redux/rootAppState';
 import {AppActions} from '../types/rootType.actions';
 import CampaignsView from '../views/CampaignsView';
 
-import {updateCampaignName} from '../redux/actions/campaignsActions.actions';
+import {
+  updateCampaignName,
+  createCampaign,
+} from '../redux/actions/campaignsActions.actions';
 
 interface CampaignsPageProps {
-  name: string;
+  history?: any;
 }
 
 interface CampaignsPageState {}
@@ -25,14 +28,16 @@ export class Campaigns extends Component<Props, CampaignsPageState> {
   onCreateCampaign = (event: any) => {
     event.preventDefault();
     // Add Props to create campaign here
+    console.log('onCreateCampaign');
+    this.props.createCampaign(this.props.name, this.props.history);
   };
 
   render() {
     return (
       <CampaignsView
         name={this.props.name}
-        onCreateCampaign={this.onCreateCampaign}
         onUpdateCampaignName={this.onUpdateCampaignName}
+        onCreateCampaign={this.onCreateCampaign}
       />
     );
   }
@@ -44,6 +49,7 @@ interface CampaignsStateProps {
 
 interface CampaignsDispatchProps {
   updateCampaignName: (event: any) => void;
+  createCampaign: (name: string, history: any) => void;
 }
 
 const mapStateToProps = (
@@ -58,6 +64,7 @@ const mapDispatchToProps = (
   ownProps: CampaignsPageProps,
 ): CampaignsDispatchProps => ({
   updateCampaignName: bindActionCreators(updateCampaignName, dispatch),
+  createCampaign: bindActionCreators(createCampaign, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Campaigns);
