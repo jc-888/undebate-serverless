@@ -1,13 +1,46 @@
 import * as React from 'react';
-import Recorder from '../components/Recorder';
+import {Card, Form, Button, InputGroup, FormControl} from 'react-bootstrap';
 
-type Props = {};
+// import Recorder from '../components/Recorder';
 
-const CampaignsView: React.FC<Props> = () => {
+type Props = {
+  name: string;
+  onUpdateCampaignName: (event: any) => void;
+  onCreateCampaign: (event: any) => void;
+};
+
+const CampaignsView: React.FC<Props> = props => {
+  const {name, onUpdateCampaignName, onCreateCampaign} = props;
+
+  const UpdateCampaignName = (event: any) => {
+    onUpdateCampaignName(event);
+  };
+
+  const CreateCampaign = (event: any) => {
+    onCreateCampaign(event);
+  };
+
   return (
     <div>
-      <h1>This is where to list all the Campaigns</h1>
-      <Recorder />
+      <Card.Title>Create Campaign</Card.Title>
+      <Form onSubmit={CreateCampaign}>
+        <InputGroup className="mb-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text id="basic-addon3">Campaign Name</InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl
+            id="basic-title"
+            aria-describedby="basic-addon3"
+            onChange={UpdateCampaignName}
+            value={name}
+          />
+        </InputGroup>
+        <Button variant="primary" type="submit">
+          Create Campaign
+        </Button>
+      </Form>
+
+      {/* <Recorder /> */}
     </div>
   );
 };

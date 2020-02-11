@@ -4,5 +4,6 @@
  *
  */
 import {AuthActionTypes} from './auth/auth.actions';
+import {CampaignsActionTypes} from './campaigns/campaigns.actions';
 
-export type AppActions = AuthActionTypes;
+export type AppActions = AuthActionTypes | CampaignsActionTypes;
