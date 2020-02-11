@@ -7,14 +7,24 @@
 			"customAuth": false
 		}
 	},
-	"api": {},
-	"function": {
-		"undebate08df619c": {
-			"service": "Lambda",
+	"api": {
+		"undebate": {
+			"service": "AppSync",
 			"providerPlugin": "awscloudformation",
-			"build": true
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
+						"userPoolConfig": {
+							"userPoolId": "authundebate13c3c6c2"
+						}
+					}
+				}
+			}
 		}
 	},
+	"function": {},
 	"storage": {
 		"s3682fc66d": {
 			"service": "S3",
