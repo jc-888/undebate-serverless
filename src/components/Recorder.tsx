@@ -1,3 +1,5 @@
+// IMPORTANT: s3 object -> "sample1.mp4" is hardcoded; must change to a unique id
+
 import React, {Component} from 'react';
 import {ReactMediaRecorder} from 'react-media-recorder';
 import Countdown from 'react-countdown';
@@ -98,7 +100,7 @@ class Recorder extends Component<RecorderProps, RecorderState> {
                     onClick={() => {
                       this.addToStorage(mediaBlobUrl);
                     }}>
-                    Use
+                    Upload
                   </button>
                 </div>
               )}

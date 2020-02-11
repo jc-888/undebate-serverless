@@ -1,3 +1,11 @@
+# AWS Amplify
+
+```
+$ npm install -g @aws-amplify/cli
+$ amplify configure
+$ amplify init
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
