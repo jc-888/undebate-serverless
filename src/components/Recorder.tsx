@@ -1,5 +1,9 @@
 // IMPORTANT: s3 object -> "sample1.mp4" is hardcoded; must change to a unique id
 
+// this was created to test front-loading everything
+// - recording webcam on the browser and directly upload to s3
+// - s3 video hosting and making the whole app serverless (webRTC not needed)
+
 import React, {Component} from 'react';
 import {ReactMediaRecorder} from 'react-media-recorder';
 import Countdown from 'react-countdown';
@@ -20,6 +24,8 @@ class Recorder extends Component<RecorderProps, RecorderState> {
       imgURL: '',
     };
   }
+
+  // check if "sample.mp4" is pressent in s3
   componentDidMount() {
     Storage.get('sample1.mp4')
       .then(result => {
@@ -31,6 +37,7 @@ class Recorder extends Component<RecorderProps, RecorderState> {
       .catch(err => console.log(err));
   }
 
+  // hardcoded .mp4 name (must change to the s3 key/id that is given when successfully uploaded)
   addToStorage = async (mediaBlobUrl: any) => {
     console.log('addToStorage');
     console.log(mediaBlobUrl);
@@ -53,10 +60,13 @@ class Recorder extends Component<RecorderProps, RecorderState> {
   render() {
     return (
       <div>
-        <div>
-          <h1>Video If Available</h1>
-          <video src={this.state.imgURL} controls></video>
-        </div>
+        {/* if "sample.mp4" is present in s3 */}
+        {this.state.imgURL && (
+          <div>
+            <h1>sample.mp4</h1>
+            <video src={this.state.imgURL} controls></video>
+          </div>
+        )}
 
         <ReactMediaRecorder
           video
@@ -68,11 +78,14 @@ class Recorder extends Component<RecorderProps, RecorderState> {
             mediaBlobUrl,
           }: any) => (
             <div>
+              {/* ask for browser permission to record the video and audio */}
               {status === 'acquiring_media' && (
                 <div>
                   <h1>Please Give Permission To Access Webcam And Audio</h1>
                 </div>
               )}
+
+              {/* idle mode */}
               {status === 'idle' && (
                 <div>
                   <button onClick={() => startRecording()}>
@@ -80,6 +93,8 @@ class Recorder extends Component<RecorderProps, RecorderState> {
                   </button>
                 </div>
               )}
+
+              {/* record with a 60 second countdown */}
               {status === 'recording' && (
                 <div>
                   <Countdown
@@ -93,6 +108,8 @@ class Recorder extends Component<RecorderProps, RecorderState> {
                   </button>
                 </div>
               )}
+
+              {/* convert video blob to .mp4 file in order to upload to s3 */}
               {status === 'stopped' && (
                 <div>
                   <video src={mediaBlobUrl} controls />
