@@ -27,8 +27,6 @@ export class Campaigns extends Component<Props, CampaignsPageState> {
 
   onCreateCampaign = (event: any) => {
     event.preventDefault();
-    // Add Props to create campaign here
-    console.log('onCreateCampaign');
     this.props.createCampaign(this.props.name, this.props.history);
   };
 

@@ -31,13 +31,7 @@ export function* createCampaignAsync({payload}: any) {
     name,
   };
 
-  console.log('making api call!');
-
   const result = yield call(onCampaignRequest, data);
-
-  yield console.log('working!');
-
-  yield console.log(result.data.createCampaign.id);
 
   yield put(createCampaignSuccess());
 
