@@ -22,6 +22,7 @@ const CampaignsView: React.FC<Props> = props => {
 
   return (
     <div>
+      {/* list campaigns here */}
       {/* <Card.Title>Create Campaign</Card.Title>
       <Form onSubmit={CreateCampaign}>
         <InputGroup className="mb-3">
