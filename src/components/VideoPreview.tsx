@@ -1,3 +1,10 @@
+/*
+ *
+ * Preview video
+ *
+ * may need to replace <video> tag with react-video
+ *
+ */
 import React, {useRef, useEffect} from 'react';
 
 const VideoPreview = ({stream}: {stream: MediaStream | null}) => {
