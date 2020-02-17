@@ -8,6 +8,7 @@ import {AppActions} from '../types/rootType.actions';
 import CampaignsView from '../views/CampaignsView';
 
 import {
+  listCampaigns,
   updateCampaignName,
   createCampaign,
 } from '../redux/actions/campaignsActions.actions';
@@ -21,6 +22,10 @@ interface CampaignsPageState {}
 type Props = CampaignsPageProps & CampaignsStateProps & CampaignsDispatchProps;
 
 export class Campaigns extends Component<Props, CampaignsPageState> {
+  componentDidMount() {
+    this.props.listCampaigns();
+  }
+
   onUpdateCampaignName = (event: any) => {
     this.props.updateCampaignName(event.target.value);
   };
@@ -33,6 +38,7 @@ export class Campaigns extends Component<Props, CampaignsPageState> {
   render() {
     return (
       <CampaignsView
+        campaigns={this.props.campaigns}
         name={this.props.name}
         onUpdateCampaignName={this.onUpdateCampaignName}
         onCreateCampaign={this.onCreateCampaign}
@@ -43,9 +49,11 @@ export class Campaigns extends Component<Props, CampaignsPageState> {
 
 interface CampaignsStateProps {
   name: string;
+  campaigns: [];
 }
 
 interface CampaignsDispatchProps {
+  listCampaigns: () => void;
   updateCampaignName: (event: any) => void;
   createCampaign: (name: string, history: any) => void;
 }
@@ -55,12 +63,14 @@ const mapStateToProps = (
   ownProps: CampaignsPageProps,
 ): CampaignsStateProps => ({
   name: state.Campaign.name,
+  campaigns: state.Campaign.campaigns,
 });
 
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<any, any, AppActions>,
   ownProps: CampaignsPageProps,
 ): CampaignsDispatchProps => ({
+  listCampaigns: bindActionCreators(listCampaigns, dispatch),
   updateCampaignName: bindActionCreators(updateCampaignName, dispatch),
   createCampaign: bindActionCreators(createCampaign, dispatch),
 });
