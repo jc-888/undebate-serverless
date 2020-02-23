@@ -10,7 +10,6 @@ import CampaignView from '../views/CampaignView';
 import {queryCampaign} from '../redux/actions/campaignActions.actions';
 
 interface CampaignPageProps {
-  // react router props
   match: any;
 }
 
@@ -25,7 +24,7 @@ export class Campaign extends Component<Props, CampaignPageState> {
     this.props.queryCampaign(campaignID);
   }
   render() {
-    return <CampaignView id={this.props.id} name={this.props.name} />;
+    return <CampaignView name={this.props.name} />;
   }
 }
 
