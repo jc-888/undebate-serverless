@@ -6,8 +6,10 @@
 import {AuthActionTypes} from './auth/auth.actions';
 import {CampaignsActionTypes} from './campaigns/campaigns.actions';
 import {CampaignActionTypes} from './campaigns/campaign.actions';
+import {QuestionActionTypes} from './question/question.actions';
 
 export type AppActions =
   | AuthActionTypes
   | CampaignsActionTypes
-  | CampaignActionTypes;
+  | CampaignActionTypes
+  | QuestionActionTypes;

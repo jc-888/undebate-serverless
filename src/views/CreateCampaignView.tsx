@@ -7,7 +7,7 @@ type Props = {
   onCreateCampaign: (event: any) => void;
 };
 
-const CampaignsView: React.FC<Props> = props => {
+const CreateCampaignView: React.FC<Props> = props => {
   const {name, onUpdateCampaignName, onCreateCampaign} = props;
 
   const UpdateCampaignName = (event: any) => {
@@ -41,4 +41,4 @@ const CampaignsView: React.FC<Props> = props => {
   );
 };
 
-export default CampaignsView;
+export default CreateCampaignView;

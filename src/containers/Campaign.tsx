@@ -24,7 +24,7 @@ export class Campaign extends Component<Props, CampaignPageState> {
     this.props.queryCampaign(campaignID);
   }
   render() {
-    return <CampaignView name={this.props.name} />;
+    return <CampaignView id={this.props.id} name={this.props.name} />;
   }
 }
 
