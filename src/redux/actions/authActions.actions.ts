@@ -44,6 +44,7 @@ export const signUp = (history: any) => {
           payload: {email: '', password: ''},
         });
         history.push('/login');
+        alert('confirm your email');
       })
       .catch(err => {
         console.log('Fail!');
@@ -70,7 +71,7 @@ export const login = (history: any) => {
             userId: data.attributes.sub,
           },
         });
-        history.push('/campaigns');
+        history.push('/');
       })
       .catch(err => {
         console.log('Login Fail!');

@@ -4,7 +4,6 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 
 import SignUp from './containers/SignUp';
 import Login from './containers/Login';
-import Home from './containers/Home';
 import Campaigns from './containers/Campaigns';
 import Campaign from './containers/Campaign';
 
@@ -36,12 +35,11 @@ class MyRouter extends Component<Props, RouterProps> {
   render() {
     return (
       <Switch>
-        <Route exact path="/" component={Home} />
         <Route exact path="/sign-up" component={SignUp} />
         <Route exact path="/login" component={Login} />
         <RestrictedRoute
           exact
-          path="/campaigns"
+          path="/"
           component={Campaigns}
           isLoggedIn={this.props.isLoggedIn}
         />

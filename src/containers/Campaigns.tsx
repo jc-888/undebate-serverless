@@ -7,11 +7,7 @@ import {AppState} from '../redux/rootAppState';
 import {AppActions} from '../types/rootType.actions';
 import CampaignsView from '../views/CampaignsView';
 
-import {
-  listCampaigns,
-  updateCampaignName,
-  createCampaign,
-} from '../redux/actions/campaignsActions.actions';
+import {listCampaigns} from '../redux/actions/campaignsActions.actions';
 
 interface CampaignsPageProps {
   history?: any;
@@ -26,43 +22,23 @@ export class Campaigns extends Component<Props, CampaignsPageState> {
     this.props.listCampaigns();
   }
 
-  onUpdateCampaignName = (event: any) => {
-    this.props.updateCampaignName(event.target.value);
-  };
-
-  onCreateCampaign = (event: any) => {
-    event.preventDefault();
-    this.props.createCampaign(this.props.name, this.props.history);
-  };
-
   render() {
-    return (
-      <CampaignsView
-        campaigns={this.props.campaigns}
-        name={this.props.name}
-        onUpdateCampaignName={this.onUpdateCampaignName}
-        onCreateCampaign={this.onCreateCampaign}
-      />
-    );
+    return <CampaignsView campaigns={this.props.campaigns} />;
   }
 }
 
 interface CampaignsStateProps {
-  name: string;
   campaigns: [];
 }
 
 interface CampaignsDispatchProps {
   listCampaigns: () => void;
-  updateCampaignName: (event: any) => void;
-  createCampaign: (name: string, history: any) => void;
 }
 
 const mapStateToProps = (
   state: AppState,
   ownProps: CampaignsPageProps,
 ): CampaignsStateProps => ({
-  name: state.Campaign.name,
   campaigns: state.Campaign.campaigns,
 });
 
@@ -71,8 +47,6 @@ const mapDispatchToProps = (
   ownProps: CampaignsPageProps,
 ): CampaignsDispatchProps => ({
   listCampaigns: bindActionCreators(listCampaigns, dispatch),
-  updateCampaignName: bindActionCreators(updateCampaignName, dispatch),
-  createCampaign: bindActionCreators(createCampaign, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Campaigns);
