@@ -10,18 +10,6 @@
             "StackName": "amplify-undebate-undebate-35403",
             "StackId": "arn:aws:cloudformation:us-west-2:505559108782:stack/amplify-undebate-undebate-35403/b493d470-4a69-11ea-b7bf-02a77ed54d64",
             "AmplifyAppId": "d3swsc5kjaxl0n"
-        },
-        "categories": {
-            "function": {
-                "undebatea14a6a32a14a6a32CustomMessage": {
-                    "REDIRECTURL": "https://google.com",
-                    "EMAILSUBJECT": "Account Confirmation",
-                    "EMAILMESSAGE": "Click the link to confirm:"
-                }
-            },
-            "auth": {
-                "undebatea14a6a32a14a6a32": {}
-            }
         }
     }
 }
