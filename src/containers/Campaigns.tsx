@@ -39,7 +39,7 @@ const mapStateToProps = (
   state: AppState,
   ownProps: CampaignsPageProps,
 ): CampaignsStateProps => ({
-  campaigns: state.Campaign.campaigns,
+  campaigns: state.Campaigns.campaigns,
 });
 
 const mapDispatchToProps = (

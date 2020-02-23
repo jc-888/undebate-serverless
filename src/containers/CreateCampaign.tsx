@@ -10,7 +10,7 @@ import CreateCampaignView from '../views/CreateCampaignView';
 import {
   updateCampaignName,
   createCampaign,
-} from '../redux/actions/campaignsActions.actions';
+} from '../redux/actions/campaignActions.actions';
 
 interface CreateCampaignPageProps {
   history?: any;
@@ -45,7 +45,6 @@ export class CreateCampaign extends Component<Props, CreateCampaignPageState> {
 
 interface CreateCampaignStateProps {
   name: string;
-  campaigns: [];
 }
 
 interface CreateCampaignDispatchProps {
@@ -58,7 +57,6 @@ const mapStateToProps = (
   ownProps: CreateCampaignPageProps,
 ): CreateCampaignStateProps => ({
   name: state.Campaign.name,
-  campaigns: state.Campaign.campaigns,
 });
 
 const mapDispatchToProps = (
