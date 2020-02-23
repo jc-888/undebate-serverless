@@ -12,7 +12,6 @@ const CampaignsView: React.FC<Props> = props => {
     <>
       {campaigns.length > 0 ? (
         <>
-          <Card.Title>Campaigns List</Card.Title>
           <ListGroup>
             {campaigns.map((campaign: any) => (
               <ListGroup.Item key={campaign.name}>

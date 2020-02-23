@@ -48,6 +48,9 @@ class Layout extends Component<Props, LayoutState> {
                 <Link to="/" className="nav-link">
                   Campaigns
                 </Link>
+                <Link to="/create-campaign" className="nav-link">
+                  Create Campaigns
+                </Link>
               </Fragment>
             ) : (
               <Link to="/sign-up" className="nav-link">
