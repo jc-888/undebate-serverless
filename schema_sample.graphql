@@ -1,4 +1,8 @@
-type Campaign @model {
+type Campaign
+  @model
+  @auth(
+    rules: [{allow: owner}, {allow: public, provider: iam, operations: [read]}]
+  ) {
   id: ID!
   name: String!
   questions: [Question] @connection(name: "CampaignQuestions")

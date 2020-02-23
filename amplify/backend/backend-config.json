@@ -1,10 +1,35 @@
 {
 	"auth": {
-		"undebate13c3c6c2": {
+		"userPoolGroups": {
+			"service": "Cognito-UserPool-Groups",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "auth",
+					"resourceName": "undebatea14a6a32a14a6a32",
+					"attributes": [
+						"UserPoolId",
+						"AppClientIDWeb",
+						"AppClientID",
+						"IdentityPoolId"
+					]
+				}
+			]
+		},
+		"undebatea14a6a32a14a6a32": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
-			"dependsOn": [],
-			"customAuth": false
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "undebatea14a6a32a14a6a32CustomMessage",
+					"triggerProvider": "Cognito",
+					"attributes": [
+						"Arn",
+						"Name"
+					]
+				}
+			]
 		}
 	},
 	"api": {
@@ -17,24 +42,25 @@
 					"defaultAuthentication": {
 						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
 						"userPoolConfig": {
-							"userPoolId": "authundebate13c3c6c2"
+							"userPoolId": "authundebatea14a6a32a14a6a32"
 						}
 					}
 				}
 			}
 		}
 	},
-	"function": {},
+	"function": {
+		"undebatea14a6a32a14a6a32CustomMessage": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true
+		}
+	},
 	"storage": {
 		"s3682fc66d": {
 			"service": "S3",
 			"providerPlugin": "awscloudformation"
 		}
 	},
-	"hosting": {
-		"S3AndCloudFront": {
-			"service": "S3AndCloudFront",
-			"providerPlugin": "awscloudformation"
-		}
-	}
+	"hosting": {}
 }

@@ -28,7 +28,7 @@ const onListCampaignsRequest = () => {
 export function* listCampaignsAsync() {
   const result = yield call(onListCampaignsRequest);
 
-  yield console.log(result.data.listCampaigns.items);
+  yield console.log(result);
 
   yield put(listCampaignsSuccess(result.data.listCampaigns.items));
 }

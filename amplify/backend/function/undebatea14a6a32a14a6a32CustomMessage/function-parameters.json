@@ -1,0 +1,14 @@
+{
+    "trigger": true,
+    "modules": [
+        "verification-link"
+    ],
+    "parentResource": "undebatea14a6a32a14a6a32",
+    "functionName": "undebatea14a6a32a14a6a32CustomMessage",
+    "parentStack": "auth",
+    "triggerEnvs": "[{\"key\":\"RESOURCENAME\",\"value\":\"resourceName\"}]",
+    "triggerTemplate": "CustomMessage.json.ejs",
+    "roleName": "undebatea14a6a32a14a6a32CustomMessage",
+    "skipEdit": true,
+    "resourceName": "undebatea14a6a32a14a6a32CustomMessage"
+}

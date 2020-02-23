@@ -1,0 +1,75 @@
+{
+    "identityPoolName": "undebatea14a6a32_identitypool_a14a6a32",
+    "allowUnauthenticatedIdentities": true,
+    "resourceNameTruncated": "undebaa14a6a32",
+    "userPoolName": "undebatea14a6a32_userpool_a14a6a32",
+    "autoVerifiedAttributes": [
+        "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+        "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+        "email"
+    ],
+    "userpoolClientGenerateSecret": true,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+        "email"
+    ],
+    "userpoolClientReadAttributes": [
+        "email"
+    ],
+    "userpoolClientLambdaRole": "undebaa14a6a32_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "useDefault": "manual",
+    "authSelections": "identityPoolAndUserPool",
+    "resourceName": "undebatea14a6a32a14a6a32",
+    "thirdPartyAuth": false,
+    "usernameAttributes": [
+        "email"
+    ],
+    "userPoolGroups": true,
+    "adminQueries": false,
+    "triggers": "{\"CustomMessage\":[\"verification-link\"]}",
+    "hostedUI": false,
+    "userPoolGroupList": [
+        "undebateuserpool"
+    ],
+    "verificationBucketName": "undebatea14a6a32a14a6a32verificationbucket",
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    },
+    "unauthRoleArn": {
+        "Fn::GetAtt": [
+            "UnauthRole",
+            "Arn"
+        ]
+    },
+    "parentStack": {
+        "Ref": "AWS::StackId"
+    },
+    "permissions": [],
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "undebatea14a6a32a14a6a32CustomMessage",
+            "triggerProvider": "Cognito",
+            "attributes": [
+                "Arn",
+                "Name"
+            ]
+        }
+    ]
+}

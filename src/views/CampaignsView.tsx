@@ -35,7 +35,9 @@ const CampaignsView: React.FC<Props> = props => {
           <Card.Title>List Campaigns</Card.Title>
           <ListGroup>
             {campaigns.map((campaign: any) => (
-              <ListGroup.Item>{campaign.name}</ListGroup.Item>
+              <ListGroup.Item key={campaign.name}>
+                {campaign.name}
+              </ListGroup.Item>
             ))}
           </ListGroup>
         </>
