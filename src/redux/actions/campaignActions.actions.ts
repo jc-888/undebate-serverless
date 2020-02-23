@@ -1,12 +1,29 @@
 import {AppActions} from '../../types/rootType.actions';
 
 export const UPDATE_CAMPAIGN_NAME = 'UPDATE_CAMPAIGN_NAME';
+export const QUERY_CAMPAIGN = 'QUERY_CAMPAIGN';
+export const QUERY_CAMPAIGN_SUCCESS = 'QUERY_CAMPAIGN_SUCCESS';
 export const CREATE_CAMPAIGN = 'CREATE_CAMPAIGN';
 export const CREATE_CAMPAIGN_SUCCESS = 'CREATE_CAMPAIGN_SUCCESS';
 
 export const updateCampaignName = (name: string) => ({
   type: UPDATE_CAMPAIGN_NAME,
   payload: {name},
+});
+
+export const queryCampaign = (campaignID: string) => ({
+  type: QUERY_CAMPAIGN,
+  payload: {
+    campaignID,
+  },
+});
+
+export const queryCampaignSuccess = (queriedCampaign: any) => ({
+  type: QUERY_CAMPAIGN_SUCCESS,
+  payload: {
+    id: queriedCampaign.id,
+    name: queriedCampaign.name,
+  },
 });
 
 export const createCampaign = (name: string, history: any): AppActions => ({

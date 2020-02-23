@@ -7,12 +7,33 @@
  */
 import {API, graphqlOperation} from 'aws-amplify';
 import * as mutations from '../../graphql/mutations';
+import * as queries from '../../graphql/queries';
 
 import {all, takeEvery, put, call} from 'redux-saga/effects';
 import {
+  QUERY_CAMPAIGN,
+  queryCampaignSuccess,
   CREATE_CAMPAIGN,
   createCampaignSuccess,
 } from './campaignActions.actions';
+
+const onQueryCampaignRequest = (campaignID: any) => {
+  const request = API.graphql(
+    graphqlOperation(queries.getCampaign, {id: campaignID}),
+  );
+  return request;
+};
+
+/* 
+  Saga Worker
+*/
+export function* queryCampaignAsync({payload}: any) {
+  const {campaignID} = payload;
+
+  const result = yield call(onQueryCampaignRequest, campaignID);
+
+  yield put(queryCampaignSuccess(result.data.getCampaign));
+}
 
 const onCreateCampaignRequest = (data: any) => {
   const request = API.graphql(
@@ -38,9 +59,9 @@ export function* createCampaignAsync({payload}: any) {
   yield history.push(`/campaign/${result.data.createCampaign.id}`);
 }
 
-/* 
-  Saga Watcher
-*/
 export default function* rootSaga() {
-  yield all([takeEvery(CREATE_CAMPAIGN, createCampaignAsync)]);
+  yield all([
+    takeEvery(CREATE_CAMPAIGN, createCampaignAsync),
+    takeEvery(QUERY_CAMPAIGN, queryCampaignAsync),
+  ]);
 }
