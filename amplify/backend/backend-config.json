@@ -1,6 +1,29 @@
 {
-	"auth": {},
-	"api": {},
+	"auth": {
+		"undebate460b2c63": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	},
+	"api": {
+		"undebate": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
+						"userPoolConfig": {
+							"userPoolId": "authundebate460b2c63"
+						}
+					}
+				}
+			}
+		}
+	},
 	"function": {},
 	"storage": {
 		"s3682fc66d": {
