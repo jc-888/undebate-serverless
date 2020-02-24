@@ -16,17 +16,17 @@ export const UPDATE_EMAIL = 'UPDATE_EMAIL';
 export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
 export const CLEAR_CREDENTIALS = 'CLEAR_CREDENTIALS';
 
-export const clearCredentials = () => ({
+export const clearCredentials = (): AppActions => ({
   type: CLEAR_CREDENTIALS,
   payload: {email: '', password: ''},
 });
 
-export const updateEmail = (email: string) => ({
+export const updateEmail = (email: string): AppActions => ({
   type: UPDATE_EMAIL,
   payload: {email: email},
 });
 
-export const updatePassword = (password: string) => ({
+export const updatePassword = (password: string): AppActions => ({
   type: UPDATE_PASSWORD,
   payload: {password: password},
 });

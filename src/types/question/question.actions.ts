@@ -5,15 +5,15 @@
  */
 
 import {
-  UPDATE_QUESTION,
+  UPDATE_QUESTION_NAME,
   QUERY_QUESTION,
   QUERY_QUESTION_SUCCESS,
   CREATE_QUESTION,
   CREATE_QUESTION_SUCCESS,
 } from '../../redux/actions/questionActions.actions';
 
-export interface updateQuestionInterface {
-  type: typeof UPDATE_QUESTION;
+export interface updateNameInterface {
+  type: typeof UPDATE_QUESTION_NAME;
   payload: {
     question: string;
   };
@@ -22,13 +22,14 @@ export interface updateQuestionInterface {
 export interface queryQuestionInterface {
   type: typeof QUERY_QUESTION;
   payload: {
-    questionID: string;
+    campaignID: string;
   };
 }
 
 export interface queryQuestionSuccessInterface {
   type: typeof QUERY_QUESTION_SUCCESS;
   payload: {
+    id: string;
     question: string;
   };
 }
@@ -44,12 +45,13 @@ export interface createQuestionInterface {
 export interface createQuestionSuccessInterface {
   type: typeof CREATE_QUESTION_SUCCESS;
   payload: {
-    payload: any;
+    id: string;
+    question: string;
   };
 }
 
 export type QuestionActionTypes =
-  | updateQuestionInterface
+  | updateNameInterface
   | queryQuestionInterface
   | queryQuestionSuccessInterface
   | createQuestionInterface

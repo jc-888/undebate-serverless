@@ -10,7 +10,6 @@ import {
 
 export interface queryCampaignsInterface {
   type: typeof LIST_CAMPAIGNS;
-  payload: {};
 }
 
 export interface queryCampaignsSuccessInterface {

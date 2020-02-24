@@ -6,7 +6,7 @@
 import {QuestionActionTypes} from '../../types/question/question.actions';
 
 import {
-  UPDATE_QUESTION,
+  UPDATE_QUESTION_NAME,
   QUERY_QUESTION,
   QUERY_QUESTION_SUCCESS,
   CREATE_QUESTION,
@@ -16,22 +16,22 @@ import {
 const initialState = {
   id: '',
   question: '',
-  questionID: '',
   history: null,
 };
 
 export default (state = initialState, action: QuestionActionTypes) => {
   switch (action.type) {
-    case UPDATE_QUESTION:
+    case UPDATE_QUESTION_NAME:
       return {...state, question: action.payload.question};
     case QUERY_QUESTION:
       return {
         ...state,
-        questionID: action.payload.questionID,
+        campaignID: action.payload.campaignID,
       };
     case QUERY_QUESTION_SUCCESS:
       return {
         ...state,
+        id: action.payload.id,
         question: action.payload.question,
       };
     case CREATE_QUESTION:
