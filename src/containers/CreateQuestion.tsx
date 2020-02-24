@@ -29,7 +29,11 @@ export class CreateQuestion extends Component<Props, CreateQuestionPageState> {
 
   onCreateQuestion = (event: any) => {
     event.preventDefault();
-    this.props.createQuestion(this.props.question, this.props.history);
+    this.props.createQuestion(
+      this.props.question,
+      this.props.campaignID,
+      this.props.history,
+    );
   };
 
   render() {
@@ -44,18 +48,20 @@ export class CreateQuestion extends Component<Props, CreateQuestionPageState> {
 }
 
 interface CreateQuestionStateProps {
+  campaignID: string;
   question: string;
 }
 
 interface CreateQuestionDispatchProps {
   updateQuestion: (event: any) => void;
-  createQuestion: (question: string, history: any) => void;
+  createQuestion: (question: string, campaignID: string, history: any) => void;
 }
 
 const mapStateToProps = (
   state: AppState,
   ownProps: CreateQuestionPageProps,
 ): CreateQuestionStateProps => ({
+  campaignID: state.Campaign.id,
   question: state.Question.question,
 });
 

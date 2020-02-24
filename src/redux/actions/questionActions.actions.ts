@@ -26,9 +26,13 @@ export const queryQuestionSuccess = (queriedQuestion: any): AppActions => ({
   },
 });
 
-export const createQuestion = (question: string, history: any): AppActions => ({
+export const createQuestion = (
+  question: string,
+  campaignID: string,
+  history: any,
+): AppActions => ({
   type: CREATE_QUESTION,
-  payload: {question, history},
+  payload: {question, campaignID, history},
 });
 
 export const createQuestionSuccess = (): AppActions => ({

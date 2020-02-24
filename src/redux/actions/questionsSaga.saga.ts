@@ -22,6 +22,9 @@ const onListQuestionsRequest = () => {
 export function* listQuestionsAsync() {
   const result = yield call(onListQuestionsRequest);
 
+  yield console.log('listQuestionsAsync');
+  yield console.log(result);
+
   yield put(listQuestionsSuccess(result.data.listQuestions.items));
 }
 

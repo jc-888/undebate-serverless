@@ -38,6 +38,7 @@ export interface createQuestionInterface {
   type: typeof CREATE_QUESTION;
   payload: {
     question: string;
+    campaignID: string;
     history: any;
   };
 }

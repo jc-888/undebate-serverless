@@ -32,6 +32,9 @@ export function* queryQuestionAsync({payload}: any) {
 
   const result = yield call(onQueryQuestionRequest, campaignID);
 
+  yield console.log('queryQuestionAsync');
+  yield console.log(result);
+
   yield put(queryQuestionSuccess(result.data.getQuestion));
 }
 
@@ -46,13 +49,17 @@ const onCreateQuestionRequest = (data: any) => {
   Saga Worker
 */
 export function* createQuestionAsync({payload}: any) {
-  const {name, history} = payload;
+  const {question, campaignID, history} = payload;
 
   const data = {
-    name,
+    question,
+    questionCampaignId: campaignID,
   };
 
   const result = yield call(onCreateQuestionRequest, data);
+
+  yield console.log('createQuestionAsync');
+  yield console.log(result);
 
   yield put(createQuestionSuccess());
 
