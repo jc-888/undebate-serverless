@@ -48,8 +48,8 @@ export interface loginInterface {
     email: string;
     password: string;
     isLoggedIn: boolean;
-    idToken: string;
-    userId: string;
+    // idToken: string;
+    // userId: string;
   };
 }
 

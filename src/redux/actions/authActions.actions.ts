@@ -3,7 +3,9 @@
  * this files handles all the redux actions for authorization
  *
  */
-import {Auth} from 'aws-amplify';
+// import {Auth} from 'aws-amplify';
+
+import {FirebaseAuth} from '../../firebase';
 
 import {Dispatch} from 'redux';
 import {AppState} from '../rootAppState';
@@ -34,10 +36,10 @@ export const updatePassword = (password: string): AppActions => ({
 export const signUp = (history: any) => {
   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     const userCred = getState().Auth;
-    Auth.signUp({
-      username: userCred.email,
-      password: userCred.password,
-    })
+    FirebaseAuth.createUserWithEmailAndPassword(
+      userCred.email,
+      userCred.password,
+    )
       .then(data => {
         dispatch({
           type: SIGNUP_SUCCESS,
@@ -56,19 +58,17 @@ export const signUp = (history: any) => {
 export const login = (history: any) => {
   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     const userCred = getState().Auth;
-    Auth.signIn({
-      username: userCred.email,
-      password: userCred.password,
-    })
+    FirebaseAuth.signInWithEmailAndPassword(userCred.email, userCred.password)
       .then(data => {
+        console.log(data);
         dispatch({
           type: LOGIN_SUCCESS,
           payload: {
             email: '',
             password: '',
             isLoggedIn: true,
-            idToken: data.signInUserSession.idToken.jwtToken,
-            userId: data.attributes.sub,
+            // idToken: data.signInUserSession.idToken.jwtToken,
+            // userId: data.attributes.sub,
           },
         });
         history.push('/');
@@ -82,7 +82,7 @@ export const login = (history: any) => {
 
 export const logout = (history: any) => {
   return (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-    Auth.signOut()
+    FirebaseAuth.signOut()
       .then(data => {
         dispatch({
           type: LOGOUT,

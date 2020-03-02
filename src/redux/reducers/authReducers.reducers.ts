@@ -54,8 +54,8 @@ export default (state = initialState, action: AuthActionTypes): AuthTypes => {
         email: action.payload.email,
         password: action.payload.password,
         isLoggedIn: action.payload.isLoggedIn,
-        idToken: action.payload.idToken,
-        userId: action.payload.userId,
+        // idToken: action.payload.idToken,
+        // userId: action.payload.userId,
       };
     default:
       return state;
