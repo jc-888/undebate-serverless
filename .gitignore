@@ -16,3 +16,6 @@ npm-debug.log
 
 # npm
 package-lock.json
+
+# enviroment variables
+firebase_config
