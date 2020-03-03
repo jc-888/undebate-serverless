@@ -9,6 +9,8 @@ import CampaignsView from '../views/CampaignsView';
 
 import {listCampaigns} from '../redux/actions/campaignsActions.actions';
 
+// import {FirebaseFirestore} from '../firebase';
+
 interface CampaignsPageProps {
   history?: any;
 }

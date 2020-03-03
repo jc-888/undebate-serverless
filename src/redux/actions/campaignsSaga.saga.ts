@@ -5,24 +5,33 @@
  * file
  *
  */
-import {API, graphqlOperation} from 'aws-amplify';
-import * as queries from '../../graphql/queries';
+// import {API, graphqlOperation} from 'aws-amplify';
+// import * as queries from '../../graphql/queries';
+
+import {FirebaseFirestore} from '../../firebase';
 
 import {all, takeEvery, put, call} from 'redux-saga/effects';
 import {LIST_CAMPAIGNS, listCampaignsSuccess} from './campaignsActions.actions';
 
+// const onListCampaignsRequest = () => {
+//   const request = API.graphql(graphqlOperation(queries.listCampaigns));
+//   return request;
+// };
+
 const onListCampaignsRequest = () => {
-  const request = API.graphql(graphqlOperation(queries.listCampaigns));
+  const request = FirebaseFirestore.collection('campaigns').get();
   return request;
 };
 
 /* 
-    Saga Worker
-  */
+  Saga Worker
+*/
 export function* listCampaignsAsync() {
   const result = yield call(onListCampaignsRequest);
 
-  yield put(listCampaignsSuccess(result.data.listCampaigns.items));
+  const campaigns = result.docs.map((doc: {data: () => any}) => doc.data());
+
+  yield put(listCampaignsSuccess(campaigns));
 }
 
 export default function* rootSaga() {

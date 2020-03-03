@@ -4,12 +4,12 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 
 import SignUp from './containers/SignUp';
 import Login from './containers/Login';
-// import Campaigns from './containers/Campaigns';
+import Campaigns from './containers/Campaigns';
 // import Campaign from './containers/Campaign';
 // import CreateCampaigns from './containers/CreateCampaign';
 // import CreateQuestion from './containers/CreateQuestion';
 
-import Home from './containers/Home';
+// import Home from './containers/Home';
 
 import {AppState} from './redux/rootAppState';
 
@@ -41,19 +41,19 @@ class MyRouter extends Component<Props, RouterProps> {
       <Switch>
         <Route exact path="/sign-up" component={SignUp} />
         <Route exact path="/login" component={Login} />
-        <RestrictedRoute
+        {/* <RestrictedRoute
           exact
           path="/"
           component={Home}
           isLoggedIn={this.props.isLoggedIn}
-        />
-        {/* <RestrictedRoute
+        /> */}
+        <RestrictedRoute
           exact
           path="/"
           component={Campaigns}
           isLoggedIn={this.props.isLoggedIn}
         />
-        <RestrictedRoute
+        {/* <RestrictedRoute
           exact
           path="/create-campaign"
           component={CreateCampaigns}

@@ -5,9 +5,11 @@
  * file
  *
  */
-import {API, graphqlOperation} from 'aws-amplify';
-import * as mutations from '../../graphql/mutations';
-import * as queries from '../../graphql/queries';
+// import {API, graphqlOperation} from 'aws-amplify';
+// import * as mutations from '../../graphql/mutations';
+// import * as queries from '../../graphql/queries';
+
+import {FirebaseFirestore} from '../../firebase';
 
 import {all, takeEvery, put, call} from 'redux-saga/effects';
 import {
@@ -17,10 +19,15 @@ import {
   createCampaignSuccess,
 } from './campaignActions.actions';
 
+// const onQueryCampaignRequest = (campaignID: any) => {
+//   const request = API.graphql(
+//     graphqlOperation(queries.getCampaign, {id: campaignID}),
+//   );
+//   return request;
+// };
+
 const onQueryCampaignRequest = (campaignID: any) => {
-  const request = API.graphql(
-    graphqlOperation(queries.getCampaign, {id: campaignID}),
-  );
+  const request = FirebaseFirestore.collection('campaigns').doc(campaignID);
   return request;
 };
 
@@ -35,10 +42,15 @@ export function* queryCampaignAsync({payload}: any) {
   yield put(queryCampaignSuccess(result.data.getCampaign));
 }
 
+// const onCreateCampaignRequest = (data: any) => {
+//   const request = API.graphql(
+//     graphqlOperation(mutations.createCampaign, {input: data}),
+//   );
+//   return request;
+// };
+
 const onCreateCampaignRequest = (data: any) => {
-  const request = API.graphql(
-    graphqlOperation(mutations.createCampaign, {input: data}),
-  );
+  const request = FirebaseFirestore.collection('campaigns').add(data);
   return request;
 };
 
