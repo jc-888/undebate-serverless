@@ -29,7 +29,11 @@ const onListCampaignsRequest = () => {
 export function* listCampaignsAsync() {
   const result = yield call(onListCampaignsRequest);
 
-  const campaigns = result.docs.map((doc: {data: () => any}) => doc.data());
+  const campaigns = yield result.docs.map((doc: {data: () => any}) =>
+    doc.data(),
+  );
+
+  yield console.log(campaigns);
 
   yield put(listCampaignsSuccess(campaigns));
 }
