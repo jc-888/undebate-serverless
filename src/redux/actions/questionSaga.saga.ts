@@ -7,7 +7,9 @@
  */
 import {API, graphqlOperation} from 'aws-amplify';
 import * as mutations from '../../graphql/mutations';
-import * as queries from '../../graphql/queries';
+// import * as queries from '../../graphql/queries';
+
+import {FirebaseFirestore} from '../../firebase';
 
 import {all, takeEvery, put, call} from 'redux-saga/effects';
 import {
@@ -17,10 +19,16 @@ import {
   createQuestionSuccess,
 } from './questionActions.actions';
 
+// const onQueryQuestionRequest = (campaignID: any) => {
+//   const request = API.graphql(
+//     graphqlOperation(queries.getQuestion, {id: campaignID}),
+//   );
+//   return request;
+// };
 const onQueryQuestionRequest = (campaignID: any) => {
-  const request = API.graphql(
-    graphqlOperation(queries.getQuestion, {id: campaignID}),
-  );
+  const request = FirebaseFirestore.collection('questions')
+    .where('campaignId', '==', campaignID)
+    .get();
   return request;
 };
 
@@ -35,7 +43,14 @@ export function* queryQuestionAsync({payload}: any) {
   yield console.log('queryQuestionAsync');
   yield console.log(result);
 
-  yield put(queryQuestionSuccess(result.data.getQuestion));
+  const questions = yield result.docs.map((doc: {data: () => any}) =>
+    doc.data(),
+  );
+
+  yield console.log('questions');
+  yield console.log(questions);
+
+  yield put(queryQuestionSuccess(questions));
 }
 
 const onCreateQuestionRequest = (data: any) => {

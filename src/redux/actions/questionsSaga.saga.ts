@@ -5,22 +5,35 @@
  * file
  *
  */
-import {API, graphqlOperation} from 'aws-amplify';
-import * as queries from '../../graphql/queries';
+// import {API, graphqlOperation} from 'aws-amplify';
+// import * as queries from '../../graphql/queries';
+
+import {FirebaseFirestore} from '../../firebase';
 
 import {all, takeEvery, put, call} from 'redux-saga/effects';
 import {LIST_QUESTIONS, listQuestionsSuccess} from './questionsActions.actions';
 
-const onListQuestionsRequest = () => {
-  const request = API.graphql(graphqlOperation(queries.listQuestions));
+// const onListQuestionsRequest = () => {
+//   const request = API.graphql(graphqlOperation(queries.listQuestions));
+//   return request;
+// };
+
+const onListQuestionsRequest = (campaignID: any) => {
+  const request = FirebaseFirestore.collection('questions')
+    .where('campaignId', '==', campaignID)
+    .get();
   return request;
 };
 
 /* 
     Saga Worker
   */
-export function* listQuestionsAsync() {
-  const result = yield call(onListQuestionsRequest);
+export function* listQuestionsAsync({payload}: any) {
+  const {campaignID} = payload;
+
+  yield console.log('onListQuestionsRequest');
+
+  const result = yield call(onListQuestionsRequest, campaignID);
 
   yield console.log('listQuestionsAsync');
   yield console.log(result);

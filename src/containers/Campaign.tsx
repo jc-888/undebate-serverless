@@ -7,7 +7,7 @@ import {AppState} from '../redux/rootAppState';
 import {AppActions} from '../types/rootType.actions';
 import CampaignView from '../views/CampaignView';
 
-import {queryCampaign} from '../redux/actions/campaignActions.actions';
+// import {queryCampaign} from '../redux/actions/campaignActions.actions';
 import {listQuestions} from '../redux/actions/questionsActions.actions';
 
 interface CampaignPageProps {
@@ -22,7 +22,7 @@ export class Campaign extends Component<Props, CampaignPageState> {
   componentDidMount() {
     let {campaignID} = this.props.match.params;
 
-    this.props.queryCampaign(campaignID);
+    // this.props.queryCampaign(campaignID);
     this.props.listQuestions(campaignID);
   }
   render() {
@@ -43,7 +43,7 @@ interface CampaignStateProps {
 }
 
 interface CampaignDispatchProps {
-  queryCampaign: (campaignID: string) => void;
+  // queryCampaign: (campaignID: string) => void;
   listQuestions: (campaignID: string) => void;
 }
 
@@ -60,7 +60,7 @@ const mapDispatchToProps = (
   dispatch: ThunkDispatch<any, any, AppActions>,
   ownProps: CampaignPageProps,
 ): CampaignDispatchProps => ({
-  queryCampaign: bindActionCreators(queryCampaign, dispatch),
+  // queryCampaign: bindActionCreators(queryCampaign, dispatch),
   listQuestions: bindActionCreators(listQuestions, dispatch),
 });
 
