@@ -11,6 +11,8 @@
 
 import {FirebaseFirestore} from '../../firebase';
 
+import {v4 as uuidv4} from 'uuid';
+
 import {all, takeEvery, put, call} from 'redux-saga/effects';
 import {
   QUERY_CAMPAIGN,
@@ -50,6 +52,7 @@ export function* queryCampaignAsync({payload}: any) {
 // };
 
 const onCreateCampaignRequest = (data: any) => {
+  console.log('onCreateCampaignRequest: ', data);
   const request = FirebaseFirestore.collection('campaigns').add(data);
   return request;
 };
@@ -61,14 +64,15 @@ export function* createCampaignAsync({payload}: any) {
   const {name, history} = payload;
 
   const data = {
+    id: uuidv4(),
     name,
   };
 
-  const result = yield call(onCreateCampaignRequest, data);
+  yield call(onCreateCampaignRequest, data);
 
   yield put(createCampaignSuccess());
 
-  yield history.push(`/campaign/${result.data.createCampaign.id}`);
+  yield history.push(`/campaign/${data.id}`);
 }
 
 export default function* rootSaga() {

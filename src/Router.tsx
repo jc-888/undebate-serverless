@@ -5,8 +5,8 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 import SignUp from './containers/SignUp';
 import Login from './containers/Login';
 import Campaigns from './containers/Campaigns';
-// import Campaign from './containers/Campaign';
-// import CreateCampaigns from './containers/CreateCampaign';
+import Campaign from './containers/Campaign';
+import CreateCampaigns from './containers/CreateCampaign';
 // import CreateQuestion from './containers/CreateQuestion';
 
 // import Home from './containers/Home';
@@ -53,7 +53,7 @@ class MyRouter extends Component<Props, RouterProps> {
           component={Campaigns}
           isLoggedIn={this.props.isLoggedIn}
         />
-        {/* <RestrictedRoute
+        <RestrictedRoute
           exact
           path="/create-campaign"
           component={CreateCampaigns}
@@ -65,6 +65,7 @@ class MyRouter extends Component<Props, RouterProps> {
           component={Campaign}
           isLoggedIn={this.props.isLoggedIn}
         />
+        {/*
         <RestrictedRoute
           exact
           path="/campagin/:campaignID/create-question"
