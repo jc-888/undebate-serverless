@@ -9,8 +9,6 @@ import CampaignsView from '../views/CampaignsView';
 
 import {listCampaigns} from '../redux/actions/campaignsActions.actions';
 
-// import {FirebaseFirestore} from '../firebase';
-
 interface CampaignsPageProps {
   history?: any;
 }
@@ -21,7 +19,9 @@ type Props = CampaignsPageProps & CampaignsStateProps & CampaignsDispatchProps;
 
 export class Campaigns extends Component<Props, CampaignsPageState> {
   componentDidMount() {
+    console.log('getting a list of campaigns');
     this.props.listCampaigns();
+    console.log('finished getting a list of campaigns');
   }
 
   render() {
