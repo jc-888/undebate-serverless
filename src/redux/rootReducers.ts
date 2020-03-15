@@ -9,13 +9,8 @@ import {combineReducers} from 'redux';
 import authReducers from './reducers/authReducers.reducers';
 import campaignsReducer from './reducers/campaignsReducers.reducers';
 import campaignReducer from './reducers/campaignReducers.reducers';
-import questionsReducer from './reducers/questionsReducer.reducers';
-import questionReducer from './reducers/questionReducers.reducers';
-
 export const rootReducer = combineReducers({
   Auth: authReducers,
   Campaigns: campaignsReducer,
   Campaign: campaignReducer,
-  Questions: questionsReducer,
-  Question: questionReducer,
 });
