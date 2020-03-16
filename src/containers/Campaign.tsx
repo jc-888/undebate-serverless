@@ -7,6 +7,8 @@ import React, {Component} from 'react';
 // import {AppActions} from '../types/rootType.actions';
 import CampaignView from '../views/CampaignView';
 
+import {FirebaseFirestore} from '../firebase';
+
 interface CampaignPageProps {
   match: any;
 }
@@ -23,9 +25,30 @@ export class Campaign extends Component<CampaignPageProps, CampaignPageState> {
   }
 
   componentDidMount() {
-    // let {campaignID} = this.props.match.params;
+    const {campaignID} = this.props.match.params;
+
+    // Query Campaign
+    this.getCampaign(campaignID);
+
     // List Questions
   }
+
+  getCampaign = async (campaignID: string) => {
+    await console.log('getting single campaign from firebase');
+
+    await FirebaseFirestore.collection('UndebateCampaigns')
+      .doc(campaignID)
+      .get()
+      .then(doc => {
+        if (!doc.exists) {
+          console.log('No such document!');
+        } else {
+          console.log('Document data:', doc.data());
+          this.setState({id: doc.id, ...doc.data()});
+        }
+      });
+  };
+
   render() {
     return (
       <CampaignView

@@ -7,6 +7,8 @@ import React, {Component} from 'react';
 // import {AppActions} from '../types/rootType.actions';
 import CreateCampaignView from '../views/CreateCampaignView';
 
+import {FirebaseFirestore} from '../firebase';
+
 interface CreateCampaignPageProps {
   history?: any;
 }
@@ -25,17 +27,26 @@ export class CreateCampaign extends Component<
     this.state = {name: ''};
   }
 
-  updateCampaignName = (value: any) => {};
+  updateCampaignName = (value: any) => {
+    this.setState({
+      name: value,
+    });
+  };
 
   onUpdateCampaignName = (event: any) => {
     this.updateCampaignName(event.target.value);
   };
 
-  createCampaign = (name: string, history: any) => {};
+  createCampaign = async (name: string) => {
+    await FirebaseFirestore.collection('UndebateCampaigns').add({
+      name: name,
+    });
+  };
 
   onCreateCampaign = (event: any) => {
     event.preventDefault();
-    this.createCampaign(this.state.name, this.state.history);
+    this.createCampaign(this.state.name);
+    this.props.history.push('/');
   };
 
   render() {
