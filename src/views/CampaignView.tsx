@@ -5,23 +5,23 @@ import {Link} from 'react-router-dom';
 type Props = {
   campaignID: string;
   name: string;
-  // questions: [];
+  questions: [];
 };
 
 const CampaignView: React.FC<Props> = props => {
   // const {id, name, questions} = props;
-  const {campaignID, name} = props;
+  const {campaignID, name, questions} = props;
 
   return (
     <>
       <Card.Title className="question-title">Campaign: {name}</Card.Title>
 
       <ListGroup>
-        {/* {questions.map((question: any) => (
+        {questions.map((question: any) => (
           <ListGroup.Item key={question.question}>
             <Link to={`/question/${question.id}`}>{question.question}</Link>
           </ListGroup.Item>
-        ))} */}
+        ))}
       </ListGroup>
 
       <Link to={`/campagin/${campaignID}/create-question`}>

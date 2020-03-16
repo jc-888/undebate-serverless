@@ -16,12 +16,13 @@ interface CampaignPageProps {
 interface CampaignPageState {
   campaignID: string;
   name: string;
+  questions: [];
 }
 
 export class Campaign extends Component<CampaignPageProps, CampaignPageState> {
   constructor(props: any) {
     super(props);
-    this.state = {campaignID: '', name: ''};
+    this.state = {campaignID: '', name: '', questions: []};
   }
 
   componentDidMount() {
@@ -31,6 +32,7 @@ export class Campaign extends Component<CampaignPageProps, CampaignPageState> {
     this.getCampaign(campaignID);
 
     // List Questions
+    this.getQuestions(campaignID);
   }
 
   getCampaign = async (campaignID: string) => {
@@ -49,10 +51,29 @@ export class Campaign extends Component<CampaignPageProps, CampaignPageState> {
       });
   };
 
+  getQuestions = async (campaignID: string) => {
+    await console.log('getting all questions from firebase');
+
+    let questions: any = [];
+
+    await FirebaseFirestore.collection('UndebateQuestions')
+      .where('campaignID', '==', campaignID)
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          questions.push({campaignID: doc.id, ...doc.data()});
+        });
+
+        this.setState({
+          questions: questions,
+        });
+      });
+  };
+
   render() {
     return (
       <CampaignView
-        // questions={this.props.questions}
+        questions={this.state.questions}
         campaignID={this.state.campaignID}
         name={this.state.name}
       />

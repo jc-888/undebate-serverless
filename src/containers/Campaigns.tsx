@@ -29,7 +29,7 @@ export class Campaigns extends Component<
   }
 
   getCampaigns = async () => {
-    await console.log('getting campaigns from firebase');
+    await console.log('getting all campaigns from firebase');
 
     let campaigns: any = [];
 

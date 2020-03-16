@@ -47,9 +47,11 @@ export class CreateQuestion extends Component<
   };
 
   onCreateQuestion = (event: any) => {
+    const {campaignID} = this.props.match.params;
+
     event.preventDefault();
     this.createQuestion(this.state.question);
-    this.props.history.push('/');
+    this.props.history.push(`/campaign/${campaignID}`);
   };
 
   render() {
