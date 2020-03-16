@@ -9,7 +9,6 @@ type Props = {
 };
 
 const CampaignView: React.FC<Props> = props => {
-  // const {id, name, questions} = props;
   const {campaignID, name, questions} = props;
 
   return (
@@ -19,12 +18,15 @@ const CampaignView: React.FC<Props> = props => {
       <ListGroup>
         {questions.map((question: any) => (
           <ListGroup.Item key={question.question}>
-            <Link to={`/question/${question.id}`}>{question.question}</Link>
+            <Link
+              to={`/campaign/${campaignID}/question/${question.questionID}`}>
+              {question.question}
+            </Link>
           </ListGroup.Item>
         ))}
       </ListGroup>
 
-      <Link to={`/campagin/${campaignID}/create-question`}>
+      <Link to={`/campaign/${campaignID}/create-question`}>
         <Button variant="dark">Add Question</Button>
       </Link>
     </>

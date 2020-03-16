@@ -61,7 +61,7 @@ export class Campaign extends Component<CampaignPageProps, CampaignPageState> {
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          questions.push({campaignID: doc.id, ...doc.data()});
+          questions.push({questionID: doc.id, ...doc.data()});
         });
 
         this.setState({
