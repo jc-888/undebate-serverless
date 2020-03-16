@@ -7,7 +7,7 @@ import Login from './containers/Login';
 import Campaigns from './containers/Campaigns';
 import Campaign from './containers/Campaign';
 import CreateCampaigns from './containers/CreateCampaign';
-// import CreateQuestion from './containers/CreateQuestion';
+import CreateQuestion from './containers/CreateQuestion';
 
 // import Home from './containers/Home';
 
@@ -65,13 +65,13 @@ class MyRouter extends Component<Props, RouterProps> {
           component={Campaign}
           isLoggedIn={this.props.isLoggedIn}
         />
-        {/*
+
         <RestrictedRoute
           exact
           path="/campagin/:campaignID/create-question"
           component={CreateQuestion}
           isLoggedIn={this.props.isLoggedIn}
-        /> */}
+        />
       </Switch>
     );
   }

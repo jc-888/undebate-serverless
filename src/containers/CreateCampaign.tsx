@@ -14,7 +14,6 @@ interface CreateCampaignPageProps {
 }
 
 interface CreateCampaignPageState {
-  history?: any;
   name: any;
 }
 

@@ -3,14 +3,14 @@ import {Card, ListGroup, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 type Props = {
-  id: string;
+  campaignID: string;
   name: string;
   // questions: [];
 };
 
 const CampaignView: React.FC<Props> = props => {
   // const {id, name, questions} = props;
-  const {id, name} = props;
+  const {campaignID, name} = props;
 
   return (
     <>
@@ -24,7 +24,7 @@ const CampaignView: React.FC<Props> = props => {
         ))} */}
       </ListGroup>
 
-      <Link to={`/campagin/${id}/create-question`}>
+      <Link to={`/campagin/${campaignID}/create-question`}>
         <Button variant="dark">Add Question</Button>
       </Link>
     </>

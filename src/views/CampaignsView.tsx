@@ -16,7 +16,9 @@ const CampaignsView: React.FC<Props> = props => {
           <ListGroup>
             {campaigns.map((campaign: any) => (
               <ListGroup.Item key={campaign.name}>
-                <Link to={`/campaign/${campaign.id}`}>{campaign.name}</Link>
+                <Link to={`/campaign/${campaign.campaignID}`}>
+                  {campaign.name}
+                </Link>
               </ListGroup.Item>
             ))}
           </ListGroup>

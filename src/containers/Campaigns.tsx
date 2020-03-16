@@ -9,9 +9,7 @@ import CampaignsView from '../views/CampaignsView';
 
 import {FirebaseFirestore} from '../firebase';
 
-interface CampaignsPageProps {
-  history?: any;
-}
+interface CampaignsPageProps {}
 
 interface CampaignsPageState {
   campaigns: [];
@@ -39,7 +37,7 @@ export class Campaigns extends Component<
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          campaigns.push({id: doc.id, ...doc.data()});
+          campaigns.push({campaignID: doc.id, ...doc.data()});
         });
 
         this.setState({

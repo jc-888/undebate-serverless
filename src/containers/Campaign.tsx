@@ -14,14 +14,14 @@ interface CampaignPageProps {
 }
 
 interface CampaignPageState {
-  id: string;
+  campaignID: string;
   name: string;
 }
 
 export class Campaign extends Component<CampaignPageProps, CampaignPageState> {
   constructor(props: any) {
     super(props);
-    this.state = {id: '', name: ''};
+    this.state = {campaignID: '', name: ''};
   }
 
   componentDidMount() {
@@ -44,7 +44,7 @@ export class Campaign extends Component<CampaignPageProps, CampaignPageState> {
           console.log('No such document!');
         } else {
           console.log('Document data:', doc.data());
-          this.setState({id: doc.id, ...doc.data()});
+          this.setState({campaignID: doc.id, ...doc.data()});
         }
       });
   };
@@ -53,7 +53,7 @@ export class Campaign extends Component<CampaignPageProps, CampaignPageState> {
     return (
       <CampaignView
         // questions={this.props.questions}
-        id={this.state.id}
+        campaignID={this.state.campaignID}
         name={this.state.name}
       />
     );
