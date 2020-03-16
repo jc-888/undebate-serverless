@@ -9,6 +9,7 @@ import Campaign from './containers/Campaign';
 import CreateCampaigns from './containers/CreateCampaign';
 import CreateQuestion from './containers/CreateQuestion';
 import Question from './containers/Question';
+import CreateAnswer from './containers/CreateAnswer';
 
 // import Home from './containers/Home';
 
@@ -76,6 +77,12 @@ class MyRouter extends Component<Props, RouterProps> {
           exact
           path="/campaign/:campaignID/question/:questionID"
           component={Question}
+          isLoggedIn={this.props.isLoggedIn}
+        />
+        <RestrictedRoute
+          exact
+          path="/campaign/:campaignID/question/:questionID/create-answer"
+          component={CreateAnswer}
           isLoggedIn={this.props.isLoggedIn}
         />
       </Switch>

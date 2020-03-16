@@ -15,7 +15,7 @@ const QuestionView: React.FC<Props> = props => {
     <>
       <Card.Title className="question-title">Question: {question}</Card.Title>
 
-      <Link to={`/campaign/${campaignID}/question/${questionID}/add-answer`}>
+      <Link to={`/campaign/${campaignID}/question/${questionID}/create-answer`}>
         <Button variant="dark">Add Answer</Button>
       </Link>
     </>
