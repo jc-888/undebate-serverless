@@ -1,41 +1,47 @@
 import React, {Component} from 'react';
-import {ThunkDispatch} from 'redux-thunk';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
+// import {ThunkDispatch} from 'redux-thunk';
+// import {bindActionCreators} from 'redux';
+// import {connect} from 'react-redux';
 
-import {AppState} from '../redux/rootAppState';
-import {AppActions} from '../types/rootType.actions';
+// import {AppState} from '../redux/rootAppState';
+// import {AppActions} from '../types/rootType.actions';
 import CreateCampaignView from '../views/CreateCampaignView';
-
-import {
-  updateCampaignName,
-  createCampaign,
-} from '../redux/actions/campaignActions.actions';
 
 interface CreateCampaignPageProps {
   history?: any;
 }
 
-interface CreateCampaignPageState {}
+interface CreateCampaignPageState {
+  history?: any;
+  name: any;
+}
 
-type Props = CreateCampaignPageProps &
-  CreateCampaignStateProps &
-  CreateCampaignDispatchProps;
+export class CreateCampaign extends Component<
+  CreateCampaignPageProps,
+  CreateCampaignPageState
+> {
+  constructor(props: any) {
+    super(props);
+    this.state = {name: ''};
+  }
 
-export class CreateCampaign extends Component<Props, CreateCampaignPageState> {
+  updateCampaignName = (value: any) => {};
+
   onUpdateCampaignName = (event: any) => {
-    this.props.updateCampaignName(event.target.value);
+    this.updateCampaignName(event.target.value);
   };
+
+  createCampaign = (name: string, history: any) => {};
 
   onCreateCampaign = (event: any) => {
     event.preventDefault();
-    this.props.createCampaign(this.props.name, this.props.history);
+    this.createCampaign(this.state.name, this.state.history);
   };
 
   render() {
     return (
       <CreateCampaignView
-        name={this.props.name}
+        name={this.state.name}
         onUpdateCampaignName={this.onUpdateCampaignName}
         onCreateCampaign={this.onCreateCampaign}
       />
@@ -43,28 +49,4 @@ export class CreateCampaign extends Component<Props, CreateCampaignPageState> {
   }
 }
 
-interface CreateCampaignStateProps {
-  name: string;
-}
-
-interface CreateCampaignDispatchProps {
-  updateCampaignName: (event: any) => void;
-  createCampaign: (name: string, history: any) => void;
-}
-
-const mapStateToProps = (
-  state: AppState,
-  ownProps: CreateCampaignPageProps,
-): CreateCampaignStateProps => ({
-  name: state.Campaign.name,
-});
-
-const mapDispatchToProps = (
-  dispatch: ThunkDispatch<any, any, AppActions>,
-  ownProps: CreateCampaignPageProps,
-): CreateCampaignDispatchProps => ({
-  updateCampaignName: bindActionCreators(updateCampaignName, dispatch),
-  createCampaign: bindActionCreators(createCampaign, dispatch),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CreateCampaign);
+export default CreateCampaign;

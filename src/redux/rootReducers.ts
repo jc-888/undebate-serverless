@@ -7,10 +7,7 @@
 import {combineReducers} from 'redux';
 
 import authReducers from './reducers/authReducers.reducers';
-import campaignsReducer from './reducers/campaignsReducers.reducers';
-import campaignReducer from './reducers/campaignReducers.reducers';
+
 export const rootReducer = combineReducers({
   Auth: authReducers,
-  Campaigns: campaignsReducer,
-  Campaign: campaignReducer,
 });
