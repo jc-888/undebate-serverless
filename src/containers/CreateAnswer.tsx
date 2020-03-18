@@ -87,7 +87,7 @@ export class CreateAnswer extends Component<
       <div>
         {this.state.imgURL && (
           <div>
-            <h1>MP$</h1>
+            <h1>MP4</h1>
             <video src={this.state.imgURL} controls></video>
           </div>
         )}
