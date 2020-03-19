@@ -105,7 +105,7 @@ export class CreateAnswer extends Component<
               {/* ask for browser permission to record the video and audio */}
               {status === 'acquiring_media' && (
                 <div>
-                  <h1>Please Give Permission To Access Webcam And Audio</h1>
+                  <h1>Give Permission To Access Webcam And Audio</h1>
                 </div>
               )}
 
